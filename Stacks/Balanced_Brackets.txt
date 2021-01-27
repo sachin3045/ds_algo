@@ -1,0 +1,60 @@
+https://www.hackerrank.com/challenges/balanced-brackets/problem
+
+#include<stdio.h>
+#include<string.h>
+char stack[100001];
+int top=-1;
+void push(char c)
+{
+    top++;
+    stack[top]=c;
+}
+char pop()
+{
+    if(top!=-1){
+    char ch=stack[top];
+    top--; return ch; }
+    return '\0';
+}
+int main()
+{
+    int t;
+    scanf(%d,&t);
+    while(t--)
+    {
+    top=-1;
+    char s[100001];
+    scanf(%s,s);
+    int i,flag=0;
+//if(s[0]==')' || s[0]=='}' || s[0]==']')
+//flag=1;
+for(i=0;i<strlen(s);i++)
+{
+ if(s[i]=='{' || s[i]=='[' || s[i]=='(')
+ push(s[i]);
+ if(s[i]==')') 
+ {
+    if(pop()!='(')
+     flag=1;
+ } 
+  if(s[i]=='}')
+  {
+     if(pop()!='{')
+     flag=1; 
+  }
+   if(s[i]==']')
+   {
+      if(pop()!='[')
+     flag=1; 
+   } 
+}
+if(top==-1 && flag!=1)
+printf(YESn);
+else
+printf(NOn);
+
+    }
+    return 0;
+}
+
+
