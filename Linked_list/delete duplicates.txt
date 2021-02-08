@@ -1,0 +1,15 @@
+https://www.hackerrank.com/challenges/delete-duplicate-value-nodes-from-a-sorted-linked-list/problem
+
+SinglyLinkedListNode* removeDuplicates(SinglyLinkedListNode* head) {
+SinglyLinkedListNode *t1;
+t1=head;
+while(t1->next!=0)
+{
+    if(t1->data==t1->next->data)
+    t1->next=t1->next->next;
+    else
+    t1=t1->next;
+}
+return head;
+}
+

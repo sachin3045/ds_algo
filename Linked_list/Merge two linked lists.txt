@@ -1,0 +1,47 @@
+https://www.hackerrank.com/challenges/merge-two-sorted-linked-lists/problem
+
+void create(SinglyLinkedListNode **h3,SinglyLinkedListNode **temp,int a)
+ {
+     SinglyLinkedListNode *newnode;
+     newnode=(struct SinglyLinkedListNode*)malloc(sizeof(struct SinglyLinkedListNode));
+        newnode->next=0;
+        newnode->data=a;
+        if(*h3==0)
+        *h3=*temp=newnode;
+        else
+        {
+        (*temp)->next=newnode; 
+        *temp=newnode;
+        }
+ }
+
+SinglyLinkedListNode* mergeLists(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
+SinglyLinkedListNode *h1,*h2,*h3=0,*temp;
+h1=head1;
+h2=head2;
+while(h1!=0 && h2!=0)
+{
+    if(h1->data>h2->data)
+    {
+       create(&h3,&temp,h2->data);
+       h2=h2->next;
+    }
+    else if( h1->data <= h2->data)
+    {
+       create(&h3,&temp,h1->data);
+       h1=h1->next; 
+    }
+}
+while(h1!=0)
+{
+  create(&h3,&temp,h1->data);
+       h1=h1->next;  
+}
+while(h2!=0)
+{
+   create(&h3,&temp,h2->data);
+       h2=h2->next; 
+}
+return h3;
+}
+
