@@ -1,0 +1,24 @@
+https://www.hackerrank.com/challenges/countingsort2/problem
+
+int* countingSort(int arr_count, int* arr, int* result_count) {
+int i,j;
+int a[100];
+static int a1[100001],c=0;
+*result_count=arr_count;
+for(i=0;i<100;i++)
+a[i]=0;
+for(i=0;i<arr_count;i++)
+a[arr[i]]++;
+for(i=0;i<100;i++)
+{
+    if(a[i]!=0)
+    {
+    for(j=0;j<a[i];j++)
+    {
+        a1[c]=i;
+        c++;
+    }
+    }
+}
+return a1;
+}
